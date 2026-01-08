@@ -8,6 +8,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
   
   return {
+    base: '/xcgg/',
     plugins: [react()],
     define: {
       // Correctly expose the API_KEY to the client-side code
