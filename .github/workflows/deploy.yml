@@ -31,7 +31,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build -- --base=/${{ github.event.repository.name }}/
+        run: npm run build
         env:
           # Optional: if your build needs API_KEY exposed in process.env.API_KEY
           API_KEY: ${{ secrets.API_KEY }}
