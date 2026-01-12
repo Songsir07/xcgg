@@ -10,6 +10,11 @@ export default defineConfig(({ mode }) => {
   return {
     base: '/xcgg/',
     plugins: [react()],
+    server: {
+      proxy: {
+        '/api': 'http://localhost:3001'
+      }
+    },
     define: {
       // Correctly expose the API_KEY to the client-side code
       // This allows 'process.env.API_KEY' to work in the browser after build

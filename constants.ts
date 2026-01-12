@@ -5,6 +5,18 @@ import { ServiceItem, NavItem, SectionId, NewsArticle } from './types';
 export const APP_NAME = "乡村硅谷";
 export const GITHUB_ORG_URL = "https://github.com/Rural-Silicon-Valley";
 
+// 控制图片策略：允许内置默认图作为回退，用户上传后自动覆盖
+export const USE_DEFAULT_IMAGES = true;
+// 简单占位图（灰底 SVG），用于未上传时占位显示
+export const PLACEHOLDER_DATA_URL =
+  'data:image/svg+xml;utf8,' +
+  encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+      <rect width="100%" height="100%" fill="#e5e7eb"/>
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#9ca3af" font-size="20">点击更换图片</text>
+    </svg>`
+  );
+
 export const NAV_ITEMS: NavItem[] = [
   { label: '首页', href: 'home', isPage: true },
   { label: '社会价值', href: `#${SectionId.IMPACT}` }, 
@@ -17,20 +29,20 @@ export const NAV_ITEMS: NavItem[] = [
 
 export const SERVICES: ServiceItem[] = [
   {
-    title: "深度工作营",
+    title: "深度工作营地",
     description: "置身于高保真自然环境中的封闭式开发营地。断联纷扰，重连心流。",
     icon: Code,
     image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800"
   },
   {
-    title: "极客·狂想",
+    title: "极客·狂想空间",
     description: "这是属于程序员的疯狂游乐场。在私有 GPU 矩阵中训练模型，在静谧山谷中释放野性代码。",
     icon: Cpu,
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800"
   },
   {
-    title: "山野·归零",
-    description: "在算法的尽头遇见森林。为长期面对屏幕的眼睛提供 500 英亩的绿意，重启系统，回归本真。",
+    title: "山野·归零体验",
+    description: "在算法的尽头遇见森林。为长期面对屏幕的眼睛提供万亩竹海的绿意，重启系统，回归本真。",
     icon: Mountain,
     image: "https://images.unsplash.com/photo-1449156493391-d2cfa28e468b?auto=format&fit=crop&q=80&w=800"
   }

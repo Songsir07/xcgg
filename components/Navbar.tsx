@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
-import { Menu, X, ArrowRight, Sun, Moon, Palette, Check, Lock } from 'lucide-react';
+import { Menu, X, ArrowRight, Sun, Moon } from 'lucide-react';
 import { NAV_ITEMS, APP_NAME } from '../constants';
 import { useTheme } from '../context/ThemeContext';
 import { useRouter } from '../context/RouterContext';
-import { useGlobalImages } from '../context/ImageContext';
 import { Page } from '../types';
 
 const Navbar: React.FC = () => {
@@ -13,34 +12,12 @@ const Navbar: React.FC = () => {
   const { scrollY } = useScroll();
   const { theme, toggleTheme } = useTheme();
   const { navigate, currentPage } = useRouter();
-  const { isEditMode, toggleEditMode } = useGlobalImages();
-
-  // Admin Mode Logic
-  const [isAdminVisible, setIsAdminVisible] = useState(false);
-  const [logoClickCount, setLogoClickCount] = useState(0);
-
-  // Reset click count if idle for 2 seconds
-  useEffect(() => {
-    const timer = setTimeout(() => setLogoClickCount(0), 2000);
-    return () => clearTimeout(timer);
-  }, [logoClickCount]);
-
   const handleLogoClick = (e: React.MouseEvent) => {
     // If not on home, navigate home
     if (currentPage !== 'home') {
        handleNavigation(e, { href: 'home', isPage: true });
        return;
     }
-
-    // Secret Trigger: Click logo 5 times to reveal admin tools
-    setLogoClickCount(prev => {
-      const newCount = prev + 1;
-      if (newCount === 5) {
-        setIsAdminVisible(true);
-        alert("管理员模式已激活：您可以编辑图片了。");
-      }
-      return newCount;
-    });
   };
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -87,10 +64,10 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <div className="flex items-center justify-between h-16">
           
-          {/* Logo (With Secret Trigger) */}
+          {/* Logo */}
           <div className="flex-shrink-0 cursor-pointer select-none" onClick={handleLogoClick}>
             <span className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white flex items-center gap-2 transition-colors duration-300">
-              <div className={`w-6 h-6 rounded-full transition-colors duration-300 ${isAdminVisible ? 'bg-blue-600' : 'bg-black dark:bg-white'}`}></div>
+              <div className="w-6 h-6 rounded-full transition-colors duration-300 bg-black dark:bg-white"></div>
               {APP_NAME}
             </span>
           </div>
@@ -114,17 +91,6 @@ const Navbar: React.FC = () => {
             
             <div className="h-4 w-px bg-gray-300 dark:bg-white/20 mx-2"></div>
             
-            {/* Edit Mode Toggle (Hidden by default) */}
-            {isAdminVisible && (
-              <button 
-                onClick={toggleEditMode}
-                className={`p-2 rounded-full transition-all duration-300 ${isEditMode ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30' : 'bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300'}`}
-                title="设计模式：自定义图片"
-              >
-                {isEditMode ? <Check size={18} /> : <Palette size={18} />}
-              </button>
-            )}
-
             {/* Theme Toggle */}
             <button 
               onClick={toggleTheme}
@@ -151,15 +117,6 @@ const Navbar: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-4">
-             {isAdminVisible && (
-               <button 
-                onClick={toggleEditMode}
-                className={`p-2 rounded-full ${isEditMode ? 'text-blue-600' : 'text-gray-900 dark:text-white'}`}
-              >
-                <Palette size={20} />
-              </button>
-             )}
-
              <button 
               onClick={toggleTheme}
               className="p-2 text-gray-900 dark:text-white"

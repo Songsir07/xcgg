@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, Mountain, Monitor, X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { SectionId } from '../types';
 import { useGlobalImages } from '../context/ImageContext';
+import ImageUploader from './ImageUploader';
 
 type TabKey = 'lodge' | 'outdoor' | 'workspace';
 
@@ -107,21 +108,13 @@ const Accommodation: React.FC = () => {
           {/* Header */}
           <div className="mb-12 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div>
-               <motion.div 
-                 initial={{ opacity: 0, y: 20 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 className="flex items-center gap-3 mb-4"
-               >
-                 <div className="h-px w-8 bg-gray-400" />
-                 <span className="text-xs font-bold tracking-[0.3em] uppercase text-gray-400">Lifestyle Redesign</span>
-               </motion.div>
                <motion.h2 
                  initial={{ opacity: 0, y: 20 }}
                  whileInView={{ opacity: 1, y: 0 }}
                  transition={{ delay: 0.1 }}
                  className="text-5xl md:text-8xl font-black tracking-tighter text-gray-900 leading-[0.9]"
                >
-                 HABITAT
+                 工作栖息地
                </motion.h2>
             </div>
 
@@ -202,6 +195,7 @@ const Accommodation: React.FC = () => {
                    alt={currentCategory.title} 
                    className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
                  />
+                 <ImageUploader id={img.id} />
                  
                  {/* Overlay */}
                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

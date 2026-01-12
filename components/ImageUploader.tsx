@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Camera, Loader2, Upload } from 'lucide-react';
+import { Loader2, Upload } from 'lucide-react';
 import { useGlobalImages } from '../context/ImageContext';
 
 interface ImageUploaderProps {
@@ -7,18 +7,45 @@ interface ImageUploaderProps {
   className?: string; // To position the overlay
 }
 
+// Global kill-switch to disable uploads once assets are finalized.
+const UPLOADS_LOCKED = true;
+
 const ImageUploader: React.FC<ImageUploaderProps> = ({ id, className = "absolute inset-0" }) => {
-  const { isEditMode, updateImage } = useGlobalImages();
+  const { updateImage, setImageURL } = useGlobalImages();
   const inputRef = useRef<HTMLInputElement>(null);
   const [uploading, setUploading] = useState(false);
 
-  if (!isEditMode) return null;
+  // When locked, hide the uploader entirely so clicks no longer open the file picker.
+  if (UPLOADS_LOCKED) {
+    return null;
+  }
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      setUploading(true);
+    if (!file) return;
+    // 即时预览：先用 blob URL 立刻显示，提升交互速度
+    const blobUrl = URL.createObjectURL(file);
+    setImageURL(id, blobUrl);
+    setUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('id', id);
+      const res = await fetch('/api/upload', { method: 'POST', body: formData });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.url) {
+          setImageURL(id, data.url);
+        } else {
+          // fallback: 本地存储方案
+          await updateImage(id, file);
+        }
+      } else {
+        await updateImage(id, file);
+      }
+    } catch (e) {
       await updateImage(id, file);
+    } finally {
       setUploading(false);
     }
   };

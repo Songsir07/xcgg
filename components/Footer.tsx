@@ -14,8 +14,7 @@ const Footer: React.FC = () => {
           <div className="md:col-span-4">
             <h3 className="font-bold text-2xl mb-6 text-gray-900 dark:text-white transition-colors duration-300">{APP_NAME}</h3>
             <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-6">
-              于自然深处，构建数字未来。<br/>
-              我们致力于将硅谷的前沿技术带入中国乡村，创造工作与生活平衡的终极形态。
+              让来自城市的科技工作者，在乡村自然中自在的工作，创造工作与生活平衡的终极形态
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-200 dark:hover:bg-white/10 transition-all"><Twitter size={18} /></a>

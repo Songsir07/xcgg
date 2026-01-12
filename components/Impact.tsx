@@ -20,7 +20,7 @@ const Impact: React.FC = () => {
              <h4 className="text-blue-600 dark:text-blue-400 font-semibold tracking-wide uppercase mb-4 text-sm">我们的使命</h4>
              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-8 leading-tight">
                AI 不应只是城市的特权。<br/>
-               <span className="text-gray-400 dark:text-gray-500">让技术在乡土生根。</span>
+               <span className="text-gray-400 dark:text-gray-500">让技术在城乡生根。</span>
              </h2>
              <p className="text-xl text-gray-600 dark:text-gray-400 font-light leading-relaxed">
                乡村硅谷致力于“AI 平权”。我们不仅提供顶级的开发环境，更致力于消除数字鸿沟。
@@ -44,16 +44,16 @@ const Impact: React.FC = () => {
              <div className="w-14 h-14 bg-white/20 dark:bg-black/10 rounded-2xl flex items-center justify-center mb-8 backdrop-blur-md">
                 <GraduationCap size={28} />
              </div>
-             <h3 className="text-3xl md:text-4xl font-bold mb-6">AI 公益讲堂</h3>
+             <h3 className="text-3xl md:text-4xl font-bold mb-6">技术平权Ai公益讲堂</h3>
              <p className="text-lg opacity-80 mb-8 leading-relaxed">
-               我们与浙江省衢州市当地政府展开多次 AI 公益培训课，覆盖整个衢州市及周边地区学员，并建立了活跃的学员社区。帮助村民掌握 ChatGPT、Midjourney 等工具的使用，让老人能用 AI 写诗，让孩子能用 AI 作画。
+               乡村硅谷与浙江省衢州市当地政府展开多次 AI 公益培训课，覆盖整个衢州市及周边地区学员，并建立了活跃的学员社区。帮助村民掌握 DeepSeek、豆包 等 AI 工具的使用，让老人用 AI 写诗，让孩子用 AI 作画。
              </p>
              <ul className="space-y-4 mb-8 opacity-90">
                <li className="flex items-center gap-4 text-lg">
                  <div className="w-10 h-10 rounded-full bg-white/10 dark:bg-black/5 flex items-center justify-center shrink-0">
                     <Users size={20} />
                  </div>
-                 <span>累计培训 2,000+ 人次</span>
+                 <span>累计参与培训与学习体验 1,000+ 人次</span>
                </li>
                <li className="flex items-center gap-4 text-lg">
                  <div className="w-10 h-10 rounded-full bg-white/10 dark:bg-black/5 flex items-center justify-center shrink-0">

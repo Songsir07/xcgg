@@ -1,60 +1,31 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GitCommit, Terminal, Coffee, Cpu, Activity, Star } from 'lucide-react';
+import { GitCommit, Coffee, Activity, Star } from 'lucide-react';
+import { useGlobalImages } from '../context/ImageContext';
+import ImageUploader from './ImageUploader';
 
 // 模拟数据：荣誉墙团队
 const HALL_OF_FAME = [
   {
     id: 1,
-    teamName: "Nexus Protocol Core",
-    project: "DeFi Infrastructure",
-    duration: "14 Days",
-    period: "2024 Oct",
+        teamName: "白山云科技",
+        project: "保密项目（受 NDA 约束）",
+        duration: "15天",
+        period: "2025年9月份",
     members: 6,
     achievements: [
       { icon: GitCommit, text: "Merged 142 PRs" },
       { icon: Coffee, text: "Consumed 400+ Espressos" },
       { icon: Activity, text: "V2.0 Mainnet Launch" }
     ],
-    quote: "我们在山间溪流旁解决了困扰三个月的并发锁问题，环境即生产力。",
+    quote: "我们山间溪流封闭开发半个月，解决了困扰我们许久的问题",
     image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800",
     tags: ["Rust", "Solana", "Distributed Systems"]
-  },
-  {
-    id: 2,
-    teamName: "OpenVision AI",
-    project: "Computer Vision Lib",
-    duration: "21 Days",
-    period: "2024 Aug",
-    members: 4,
-    achievements: [
-      { icon: Cpu, text: "Trained 3 New Models" },
-      { icon: Terminal, text: "Refactored Core Engine" },
-      { icon: Star, text: "GitHub 5k+ Stars Gained" }
-    ],
-    quote: "这里百兆带宽直连 GPU 集群，抬头就是雪山，这是属于极客的瓦尔登湖。",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
-    tags: ["Python", "PyTorch", "CUDA"]
-  },
-  {
-    id: 3,
-    teamName: "Indie Hacker Duo",
-    project: "SaaS Dashboard Tool",
-    duration: "30 Days",
-    period: "2024 Nov",
-    members: 2,
-    achievements: [
-      { icon: Activity, text: "MVP form 0 to 1" },
-      { icon: Coffee, text: "Zero Burnout" },
-      { icon: GitCommit, text: "First Paying Customer" }
-    ],
-    quote: "原来不需要在大城市卷，在乡村反而能做出更酷的产品。",
-    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800",
-    tags: ["React", "Node.js", "Stripe"]
   }
 ];
 
 const HallOfFame: React.FC = () => {
+  const { getImage } = useGlobalImages();
   return (
     <div className="bg-white dark:bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300">
       <main className="pt-24 pb-20 px-6 max-w-7xl mx-auto">
@@ -80,7 +51,9 @@ const HallOfFame: React.FC = () => {
 
         {/* Grid */}
         <div className="grid grid-cols-1 gap-12">
-          {HALL_OF_FAME.map((team, index) => (
+          {HALL_OF_FAME.map((team, index) => {
+            const teamImageSrc = getImage(`hof-${team.id}`, team.image);
+            return (
             <motion.div
               key={team.id}
               initial={{ opacity: 0, y: 40 }}
@@ -94,10 +67,11 @@ const HallOfFame: React.FC = () => {
                 <div className="relative h-64 md:h-auto overflow-hidden">
                     <div className="absolute inset-0 bg-blue-900/10 mix-blend-overlay z-10"></div>
                     <img 
-                        src={team.image} 
+                        src={teamImageSrc} 
                         alt={team.teamName}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
+                    <ImageUploader id={`hof-${team.id}`} />
                     <div className="absolute bottom-4 left-4 z-20 flex gap-2">
                         {team.tags.map(tag => (
                             <span key={tag} className="px-2 py-1 text-xs font-medium bg-black/60 backdrop-blur-md text-white rounded border border-white/20">
@@ -112,7 +86,7 @@ const HallOfFame: React.FC = () => {
                     <div>
                         <div className="flex items-center justify-between mb-4">
                             <span className="text-sm font-medium text-gray-500 dark:text-gray-400 font-mono">
-                                {team.period} • {team.duration} Retreat
+                                {team.period}，{team.duration}静修
                             </span>
                         </div>
                         <h2 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
@@ -143,7 +117,8 @@ const HallOfFame: React.FC = () => {
                 </div>
               </div>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
         
         <div className="mt-20 text-center">

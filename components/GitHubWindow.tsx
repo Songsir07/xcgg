@@ -64,19 +64,19 @@ const GitHubWindow: React.FC = () => {
 
                {/* Org Name */}
                <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 leading-tight">
-                 硅谷农村
+                 Rural Silicon Valley
                </h1>
                
                {/* Bio */}
                <p className="text-gray-600 dark:text-gray-300 text-base mt-2 mb-4 leading-normal">
-                 中国曲州的硅谷农村
+                 Rural Silicon Valley in Quzhou
                </p>
                
                {/* Meta Info */}
                <div className="space-y-3 text-sm text-gray-600 dark:text-gray-400 w-full mb-6">
                   <div className="flex items-center gap-2 hover:text-blue-600 cursor-pointer">
                      <Users size={16} className="text-gray-500" /> 
-                     <span className="font-semibold text-gray-900 dark:text-gray-200">4</span> 名追随者
+                     <span className="font-semibold text-gray-900 dark:text-gray-200">27</span> 名追随者
                   </div>
                   <div className="flex items-center gap-2">
                      <MapPin size={16} className="text-gray-500" /> 

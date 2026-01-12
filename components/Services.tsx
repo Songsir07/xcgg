@@ -13,7 +13,7 @@ const Services: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-20">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6 transition-colors duration-300">
-            生态系统。
+            生态系统
           </h2>
           <hr className="border-gray-200 dark:border-white/10 transition-colors duration-300" />
         </div>

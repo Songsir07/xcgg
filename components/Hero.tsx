@@ -46,18 +46,21 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="pointer-events-auto"
         >
-          <span className="inline-block py-1 px-3 rounded-full bg-white/70 dark:bg-black/40 border border-white/20 dark:border-white/10 text-xs font-semibold uppercase tracking-wider text-gray-800 dark:text-gray-200 mb-6 backdrop-blur-md shadow-sm">
-            始于 2024
+          <span className="inline-block py-1 px-3 rounded-full bg-white/70 dark:bg黑/40 border border-white/20 dark:border-white/10 text-xs font-semibold uppercase tracking-wider text-gray-800 dark:text-gray-200 mb-6 backdrop-blur-md shadow-sm">
+            始于2025
           </span>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-gray-900 dark:text-white leading-[1.1] mb-8 transition-colors duration-300 drop-shadow-2xl">
-            当硅谷<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-800 to-teal-700 dark:from-emerald-400 dark:to-teal-200">
-              遇见旷野。
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-amber-500 to-amber-500 dark:from-amber-400 dark:via-amber-400 dark:to-amber-400">
+              当硅谷
+            </span>
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-yellow-500 dark:from-amber-300 dark:to-yellow-400">
+              遇见旷野
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-800 dark:text-gray-200 max-w-2xl mx-auto font-medium leading-relaxed transition-colors duration-300 drop-shadow-md text-shadow-sm">
-            全球首个闭环 AI 开发圣地。<br className="hidden md:block"/>
-            于自然中编码，向未来部署。
+          <p className="text-xl md:text-2xl text-gray-100 dark:text-gray-100 max-w-2xl mx-auto font-medium leading-relaxed transition-colors duration-300 drop-shadow-md text-shadow-sm">
+            全球首个封闭开发庄园及基地<br className="hidden md:block"/>
+            于自然中编码，向未来去部署
           </p>
 
           <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
